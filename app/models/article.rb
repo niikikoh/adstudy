@@ -13,12 +13,4 @@ class Article < ApplicationRecord
     I18n.l(created_at, format: :default)
   end
 
-  def image_attached?
-    - if current_user.image.exists?
-      = current_user.image, class: 'header_avatar dropbtn'
-    - else
-      = 'default-avatar.png', class: 'header_avatar dropbtn'
-    end
-  end
-      
 end
