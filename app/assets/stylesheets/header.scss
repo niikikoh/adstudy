@@ -1,0 +1,122 @@
+
+.dropdown{
+    margin: 0 0 0 0em;
+}
+
+.header{
+    display: flex;
+
+    &_pageTitle{
+        margin: 0 0 0 0em;
+
+        font-size: 30px;
+        font-family: 'Arial Narrow Bold', sans-serif;
+    }
+
+    &_avatar{
+      
+        transform: translate(50%, 50%);
+        -webkit-transform: translate(0%, 8%);
+        transform: translate(0%, 9%);
+      
+        // まるにする
+        border-radius: 50%;
+        width:  50px;
+        height: 50px;
+        border: 2px solid rgba(250, 120, 120, 1);
+    }
+
+    &_registrationBtn{
+        display: block;
+        position: relative;
+        width: 80px;
+        height: 25px;
+        padding: 0.8em;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background: #71a762;
+    
+        border-radius: 10%;
+        
+        margin: 0 0 0 auto;
+
+
+        &:hover {
+            opacity:0.8;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    }
+
+    &_loginBtn{
+        display: block;
+        position: relative;
+        width: 80px;
+        height: 25px;
+        padding: 0.8em;
+        margin: 0 0 0 63em;
+
+        text-align: center;
+        text-decoration: none;
+        color: black;
+
+        opacity:0.7;    
+        border-radius: 10%;
+
+
+        &:hover {
+            opacity:1;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    }
+
+    //ボタンのCSS設定
+    &_logoutBtn {
+        display: block;
+        position: relative;
+        width: 80px;
+        height: 25px;
+        padding: 0.8em;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background: #71a762;
+    
+        border-radius: 10%;
+        
+        margin: 0 0 0 auto;
+
+
+        &:hover {
+            opacity:0.8;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    }
+
+    &_newPostButton{
+        display: block;
+        position: relative;
+        width: 100px;
+        height: 25px;
+        padding: 0.8em;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background: #2f5b25;
+    
+        border-radius: 10%;
+        
+        margin: 0 0 0 auto;
+    
+    
+        &:hover {
+            opacity:0.8;
+            cursor: pointer;
+        }
+    }
+
+}
+

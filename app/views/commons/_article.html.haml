@@ -1,0 +1,10 @@
+%article
+  %header
+    %p= article.author_name
+    %p= article.display_created_at
+  = link_to article_path(article) do
+    .card
+      %h2.card_title
+        = article&.title
+      .card_detail
+%hr

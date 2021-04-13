@@ -1,0 +1,4 @@
+.container
+  %hr
+    - @articles.each do |article|
+      = render 'commons/article', article: article
