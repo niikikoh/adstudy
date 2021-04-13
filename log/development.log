@@ -9339,3 +9339,270 @@ SyntaxError - syntax error, unexpected '='
   app/controllers/articles_controller.rb:5:in `index'
 
 Started POST "/__better_errors/b7da1aeabfc5fa7d/variables" for ::1 at 2021-04-13 21:36:24 +0900
+Started GET "/" for ::1 at 2021-04-13 22:14:53 +0900
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.haml
+  Rendering articles/index.html.haml within layouts/application
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/commons/_articles.html.haml:3
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/article.rb:9:in `author_name'
+  Rendered commons/_article.html.haml (Duration: 252.4ms | Allocations: 224323)
+  Rendered commons/_articles.html.haml (Duration: 267.4ms | Allocations: 231763)
+  Rendered articles/index.html.haml within layouts/application (Duration: 281.5ms | Allocations: 236146)
+  Rendered layout layouts/application.html.haml (Duration: 288.1ms | Allocations: 245211)
+Completed 500 Internal Server Error in 326ms (ActiveRecord: 11.9ms | Allocations: 258361)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check !!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title study-app
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %body
+    %header.header
+      .header_logos
+        %p.header_pageTitle
+          = link_to 'AdStudy', root_path
+      - if user_signed_in?
+        = link_to '新規作成',new_article_path,class: 'header_newPostButton'
+        .dropdown
+          - if current_user.image.exists?
+            = current_user.image, class: 'header_avatar dropbtn'
+          - else
+            = 'default-avatar.png', class: 'header_avatar dropbtn'
+            -# .dropdown-content
+            -#   = link_to 'プロフィール', profile_path
+            -#   = link_to 'お気に入り', favorites_path
+        = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }, class: 'header_logoutBtn'
+      - else
+        = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
+        = link_to '新規登録', new_user_registration_path, class: 'header_registrationBtn'
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
+    = yield:
+
+Started POST "/__better_errors/1243dc40091199e4/variables" for ::1 at 2021-04-13 22:14:54 +0900
+Started GET "/" for ::1 at 2021-04-13 22:15:05 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.haml
+  Rendering articles/index.html.haml within layouts/application
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/commons/_articles.html.haml:3
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/article.rb:9:in `author_name'
+  Rendered commons/_article.html.haml (Duration: 185.8ms | Allocations: 224320)
+  Rendered commons/_articles.html.haml (Duration: 199.0ms | Allocations: 231759)
+  Rendered articles/index.html.haml within layouts/application (Duration: 212.7ms | Allocations: 236142)
+  Rendered layout layouts/application.html.haml (Duration: 218.3ms | Allocations: 245207)
+Completed 500 Internal Server Error in 249ms (ActiveRecord: 11.4ms | Allocations: 258366)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check !!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title study-app
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %body
+    %header.header
+      .header_logos
+        %p.header_pageTitle
+          = link_to 'AdStudy', root_path
+      - if user_signed_in?
+        = link_to '新規作成',new_article_path,class: 'header_newPostButton'
+        .dropdown
+          - if current_user.image.exists?
+            = current_user.image, class: 'header_avatar dropbtn'
+          - else
+            = 'default-avatar.png', class: 'header_avatar dropbtn'
+            -# .dropdown-content
+            -#   = link_to 'プロフィール', profile_path
+            -#   = link_to 'お気に入り', favorites_path
+        = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }, class: 'header_logoutBtn'
+      - else
+        = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
+        = link_to '新規登録', new_user_registration_path, class: 'header_registrationBtn'
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
+    = yield:
+
+Started POST "/__better_errors/eb4694ea8b6e200c/variables" for ::1 at 2021-04-13 22:15:05 +0900
+Started GET "/" for ::1 at 2021-04-13 22:16:24 +0900
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.haml
+  Rendering articles/index.html.haml within layouts/application
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/commons/_articles.html.haml:3
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/article.rb:9:in `author_name'
+  Rendered commons/_article.html.haml (Duration: 2.9ms | Allocations: 1114)
+  Rendered commons/_articles.html.haml (Duration: 5.0ms | Allocations: 1945)
+  Rendered articles/index.html.haml within layouts/application (Duration: 5.3ms | Allocations: 2058)
+  Rendered layout layouts/application.html.haml (Duration: 11.9ms | Allocations: 10836)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 3.0ms | Allocations: 12576)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check !!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title study-app
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %body
+    %header.header
+      .header_logos
+        %p.header_pageTitle
+          = link_to 'AdStudy', root_path
+      - if user_signed_in?
+        = link_to '新規作成',new_article_path,class: 'header_newPostButton'
+        .dropdown
+          - if current_user.image.exists?
+            = current_user.image, class: 'header_avatar dropbtn'
+          - else
+            = 'default-avatar.png', class: 'header_avatar dropbtn'
+            -# .dropdown-content
+            -#   = link_to 'プロフィール', profile_path
+            -#   = link_to 'お気に入り', favorites_path
+        = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }, class: 'header_logoutBtn'
+      - else
+        = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
+        = link_to '新規登録', new_user_registration_path, class: 'header_registrationBtn'
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
+    = yield:
+
+Started POST "/__better_errors/4078eb3ef7ad8dfa/variables" for ::1 at 2021-04-13 22:16:24 +0900
+Started GET "/" for ::1 at 2021-04-13 22:19:31 +0900
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.haml
+  Rendering articles/index.html.haml within layouts/application
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/commons/_articles.html.haml:3
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/article.rb:9:in `author_name'
+  Rendered commons/_article.html.haml (Duration: 3.6ms | Allocations: 1114)
+  Rendered commons/_articles.html.haml (Duration: 5.8ms | Allocations: 1945)
+  Rendered articles/index.html.haml within layouts/application (Duration: 6.1ms | Allocations: 2058)
+  Rendered layout layouts/application.html.haml (Duration: 11.9ms | Allocations: 10815)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 3.2ms | Allocations: 12552)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check !!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title study-app
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %body
+    %header.header
+      .header_logos
+        %p.header_pageTitle
+          = link_to 'AdStudy', root_path
+      - if user_signed_in?
+        = link_to '新規作成',new_article_path,class: 'header_newPostButton'
+        .dropdown
+          - if current_user.image.exists?
+            = current_user.image, class: 'header_avatar dropbtn'
+          - else
+            = 'default-avatar.png', class: 'header_avatar dropbtn'
+            -# .dropdown-content
+            -#   = link_to 'プロフィール', profile_path
+            -#   = link_to 'お気に入り', favorites_path
+        = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }, class: 'header_logoutBtn'
+      - else
+        = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
+        = link_to '新規登録', new_user_registration_path, class: 'header_registrationBtn'
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
+    = yield:
+
+Started POST "/__better_errors/7da27eb7cea8f74d/variables" for ::1 at 2021-04-13 22:19:31 +0900
+Started GET "/" for ::1 at 2021-04-13 22:19:32 +0900
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.haml
+  Rendering articles/index.html.haml within layouts/application
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/commons/_articles.html.haml:3
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/article.rb:9:in `author_name'
+  Rendered commons/_article.html.haml (Duration: 3.0ms | Allocations: 1114)
+  Rendered commons/_articles.html.haml (Duration: 5.5ms | Allocations: 1945)
+  Rendered articles/index.html.haml within layouts/application (Duration: 5.8ms | Allocations: 2058)
+  Rendered layout layouts/application.html.haml (Duration: 11.8ms | Allocations: 10815)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 3.3ms | Allocations: 12552)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check !!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title study-app
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    %body
+    %header.header
+      .header_logos
+        %p.header_pageTitle
+          = link_to 'AdStudy', root_path
+      - if user_signed_in?
+        = link_to '新規作成',new_article_path,class: 'header_newPostButton'
+        .dropdown
+          - if current_user.image.exists?
+            = current_user.image, class: 'header_avatar dropbtn'
+          - else
+            = 'default-avatar.png', class: 'header_avatar dropbtn'
+            -# .dropdown-content
+            -#   = link_to 'プロフィール', profile_path
+            -#   = link_to 'お気に入り', favorites_path
+        = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }, class: 'header_logoutBtn'
+      - else
+        = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
+        = link_to '新規登録', new_user_registration_path, class: 'header_registrationBtn'
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}= value
+    = yield:
+
+Started POST "/__better_errors/f88dcba65c91b7ce/variables" for ::1 at 2021-04-13 22:19:32 +0900
