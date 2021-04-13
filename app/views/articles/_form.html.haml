@@ -5,11 +5,6 @@
   = form_with(model: @article, local: true) do |f|
 
     %div
-      = f.label :image, 'サムネイル'
-    %div
-      = f.file_field :image
-
-    %div
       = f.label :title, 'タイトル'
     %div
       = f.text_field :title, class: 'text'
