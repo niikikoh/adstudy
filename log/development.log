@@ -9315,3 +9315,27 @@ SyntaxError - syntax error, unexpected '='
   app/controllers/articles_controller.rb:5:in `index'
 
 Started POST "/__better_errors/a19cc02d33fde62a/variables" for ::1 at 2021-04-13 07:35:03 +0900
+Started GET "/" for ::1 at 2021-04-13 21:36:24 +0900
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ArticlesController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 8.8ms | Allocations: 12149)
+
+
+
+SyntaxError - syntax error, unexpected '='
+      = current_user.image, class: '...
+      ^
+/Users/satokoki64/study-app/app/models/article.rb:18: syntax error, unexpected label, expecting '='
+...   = current_user.image, class: 'header_avatar dropbtn'
+...                         ^~~~~~
+/Users/satokoki64/study-app/app/models/article.rb:19: syntax error, unexpected `else'
+    - else
+      ^~~~
+/Users/satokoki64/study-app/app/models/article.rb:20: syntax error, unexpected ',', expecting `end'
+      = 'default-avatar.png', class: 'header_avatar dropbt...
+                            ^:
+  app/models/article.rb:18:in `'
+  app/controllers/articles_controller.rb:5:in `index'
+
+Started POST "/__better_errors/b7da1aeabfc5fa7d/variables" for ::1 at 2021-04-13 21:36:24 +0900
