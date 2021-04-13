@@ -8,7 +8,7 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    %body
+  %body
     %header.header
       .header_logos
         %p.header_pageTitle
@@ -16,10 +16,10 @@
       - if user_signed_in?
         = link_to '新規作成',new_article_path,class: 'header_newPostButton'
         .dropdown
-          - if current_user.image.exists?
-            = current_user.image, class: 'header_avatar dropbtn'
+          - if current_user.image
+            = image_tag current_user.image, class: 'header_avatar dropbtn'
           - else
-            = 'default-avatar.png', class: 'header_avatar dropbtn'
+            = image_tag 'default-avatar.png', class: 'header_avatar dropbtn'
             -# .dropdown-content
             -#   = link_to 'プロフィール', profile_path
             -#   = link_to 'お気に入り', favorites_path
