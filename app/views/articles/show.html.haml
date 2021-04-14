@@ -1,21 +1,17 @@
 .article#article-show{data: {article_id: @article.id}}
 
-  %h1.article_title= @article.title
-  .article_detail
-    = link_to profile_path(@article.user) do
-      = @user&.image&.attached?
+  %header
+    %p= "#{@article.author_name}が#{@article.display_created_at}に投稿"
+    // そのうちif文で更新も追加するかも
+    // アバター画像からプロフィールに飛びたい
 
-    %div
-      %p= @article.author_name
-      %p= @article.display_created_at
-
-  - if user_signed_in? && current_user.present?
-    .article_detail_actions
-      .dropdown
-        %i.fas.fa-ellipsis-h
-          .dropdown-content.mini
-            = link_to '編集する', edit_article_path(@article)
-            = link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
-
-  .article_content
-    = @article.content
+    - if user_signed_in? && current_user.present?
+      = link_to '編集する', edit_article_path(@article)
+      = link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもいいですか？'}
+  
+  %body
+    %h2.article_title
+      = @article&.title
+    
+    .article_content
+      = @article&.content 

@@ -3,7 +3,6 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
-    
   end
   
   def show
@@ -29,7 +28,8 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @articles = current_user.articles.find(params[:id])
+    @article = current_user.articles.find(params[:id])
+
     if @article.update(article_params)
       redirect_to article_path(@article), notice: '更新できました'
     else
