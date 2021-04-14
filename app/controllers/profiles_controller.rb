@@ -2,6 +2,9 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = current_user.profile
+    
+    binding.pry
+    
   end
 
   def edit
@@ -18,7 +21,7 @@ class ProfilesController < ApplicationController
       flash.now[:error] = '更新できませんでした'
       render :edit
     end
-    
+
   end
 
   private
