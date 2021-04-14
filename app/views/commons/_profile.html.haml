@@ -1,6 +1,9 @@
 -# = image_tag current_user.avatar
-
-%p= @profile&.name
+- if Profile.name.exists?
+  %p= @profile&.name
+- else
+  %p= current_user.name
+  
 %p= @profile&.bio
 
 %p= current_user&.articles

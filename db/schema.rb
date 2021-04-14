@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2021_04_14_122502) do
     t.text "bio"
     t.string "avatar"
     t.bigint "user_id", null: false
-    t.bigint "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["article_id"], name: "index_profiles_on_article_id"

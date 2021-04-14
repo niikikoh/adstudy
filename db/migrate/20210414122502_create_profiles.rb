@@ -5,7 +5,6 @@ class CreateProfiles < ActiveRecord::Migration[6.1]
       t.text :bio
       t.string :avatar
       t.references :user, null: false, foreign_key: true
-      t.references :article, null: false, foreign_key: true
 
       t.timestamps
     end
