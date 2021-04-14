@@ -1,0 +1,8 @@
+-# = image_tag current_user.avatar
+
+%p= @profile&.name
+%p= @profile&.bio
+
+%p= current_user&.articles
+
+= link_to '編集', edit_profile_path(@profile)
