@@ -2,9 +2,24 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = current_user.profile
-    
-    binding.pry
-    
+  end
+
+  def new
+    @profile = current_user.build_profile
+  end
+
+  def create
+    @profile = current_user.build_profile(profile_params)
+
+    @profile.assign_attributes(profile_params) #.assign_attributesは変更するだけで保存はしない。フォームから送られてきた値（profile_params）を保存できなかった場合、記入していた文字がそのまま残ってrenderされる
+    if @profile.save
+      flash[:success] = "プロフィールの登録に成功しました"
+      redirect_to root_url
+     else
+      flash[:danger] = "プロフィールの登録に失敗しました"
+      render :edit
+    end
+
   end
 
   def edit

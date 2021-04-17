@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :views
-  devise_for :users
   root to: 'articles#index'
 
+  devise_for :users
+
   resources :articles
-  resources :profiles, only: [:show, :edit, :update]
+  resource :profile, only: [:new, :create, :show, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
