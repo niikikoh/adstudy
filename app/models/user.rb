@@ -6,12 +6,15 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   
-  has_one :profile, dependent: :destroy
-  has_many :articles
+  has_one :profile,   dependent: :destroy
+  has_many :articles, dependent: :destroy
+
+  # profileの値をユーザー側で使用許可&nilをスキップ
+  delegate :name, :bio, :avatar, to: :profile, allow_nil: true
 
 
   def display_name
-    profile&.nickname || email.split('@').first
+    profile&.name || email.split('@').first
   end
 
   def prepare_profile

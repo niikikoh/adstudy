@@ -1,7 +1,25 @@
-%h1 Editing profile
+= form_with model: @profile, url: profile_path, local: true do |f|
+  - if @profile.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
+      %ul
+        - @profile.errors.full_messages.each do |message|
+          %li= message
 
-= render 'form'
+  .field
+    = f.label :name, 'ユーザー名'
+    <br>
+    = f.text_field :name
 
-= link_to 'Show', @profile
-\|
-= link_to 'Back', profiles_path
+  .field
+    = f.label :bio,'自己紹介'
+    <br>
+    = f.text_area :bio
+
+  .field
+    = f.label :avatar,'アイコン'
+    <br>
+    = f.file_field :avatar
+
+  .actions
+    = f.submit '保存'

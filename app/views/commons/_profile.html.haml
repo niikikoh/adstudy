@@ -1,11 +1,7 @@
 -# = image_tag current_user.avatar
-- if Profile.name.exists?
+- if Profile.exists?
+  = image_tag @profile.avatar_image
   %p= @profile&.name
-- else
-  %p= current_user.name
-  
-%p= @profile&.bio
+  %p= @profile&.bio
 
-%p= current_user&.articles
-
-= link_to '編集', edit_profile_path(@profile)
+= link_to 'プロフィールを編集する', edit_profile_path(@profile)
