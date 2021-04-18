@@ -1,7 +1,11 @@
 class ProfilesController < ApplicationController
 
   def show
-    @profile = current_user.profile
+    - if current_user.profile.exist?
+      @profile = current_user.profile
+    else
+      render 'new'
+    end
   end
 
   def new

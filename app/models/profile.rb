@@ -4,6 +4,8 @@ class Profile < ApplicationRecord
 
   has_one_attached :avatar
 
+  mount_uploader :avatar, ImageUploader
+
   def avatar_image
     if @profile&.avatar&.attached?
       @profile.avatar
