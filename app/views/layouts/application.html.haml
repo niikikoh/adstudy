@@ -21,14 +21,7 @@
           = link_to 'AdStudy', root_path
       - if user_signed_in?
         = link_to '新規作成',new_article_path,class: 'header_newPostButton'
-        .dropdown
-          - if current_user.image
-            = image_tag current_user.image, class: 'header_avatar dropbtn'
-          - else
-            = image_tag 'default-avatar.png', class: 'header_avatar dropbtn'
-            -# .dropdown-content
-            -#   = link_to 'プロフィール', profile_path
-            -#   = link_to 'お気に入り', favorites_path
+        = image_tag current_user.avatar_image
         = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }, class: 'header_logoutBtn'
       - else
         = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
