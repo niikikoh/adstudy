@@ -22,8 +22,8 @@ class User < ApplicationRecord
   end
 
   def avatar_image
-    if @profile&.avatar&.attached?
-      @profile.avatar
+    if @profile&.avatar&.present?
+      @profile.avatar.to_s
     else
       'default-avatar.png'
     end

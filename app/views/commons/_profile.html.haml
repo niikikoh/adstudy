@@ -1,7 +1,9 @@
--# = image_tag current_user.avatar
-- if Profile.exists?
-  = image_tag @profile.avatar_image
-  %p= @profile&.name
-  %p= @profile&.bio
+- if @profile&.avatar&.present?
+  = image_tag @profile.avatar.to_s, class: 'profile_avatar'
+- else
+  = image_tag 'default-avatar.png'
+
+%p= @profile&.name
+%p= @profile&.bio
 
 = link_to 'プロフィールを編集する', edit_profile_path(@profile)

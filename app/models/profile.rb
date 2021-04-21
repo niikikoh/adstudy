@@ -1,14 +1,12 @@
 class Profile < ApplicationRecord
   belongs_to :user
-  has_many :articles
-
   has_one_attached :avatar
 
   mount_uploader :avatar, ImageUploader
   
   def avatar_image
-    if @profile.avatar.attached?
-      @profile.avatar
+    if @profile&.avatar&.present?
+      @profile.avatar.to_s
     else
       'default-avatar.png'
     end
