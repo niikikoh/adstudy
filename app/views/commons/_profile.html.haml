@@ -1,7 +1,23 @@
--# = image_tag current_user.avatar
-- if Profile.exists?
-  = image_tag @profile.avatar_image
-  %p= @profile&.name
-  %p= @profile&.bio
+%body
+  .profile
+    .profile_box
+      - if @profile&.avatar&.present?
+        = image_tag @profile.avatar.to_s, class: 'profile_box_avatar'
+      - else
+        = image_tag 'default-avatar.png'
 
-= link_to 'プロフィールを編集する', edit_profile_path(@profile)
+      .profile_box_nickname
+        %p= @profile&.name
+
+      .profile_box_introduction
+        %p= @profile&.bio
+
+      .profile_box_editLink
+        = link_to 'プロフィールを編集する', edit_profile_path(@profile)
+
+    .profile_articles
+      // profileのユーザーが投稿した記事一覧
+      = render 'commons/articles'
+
+    .bookmarks
+    // ブックマークした記事を表示
