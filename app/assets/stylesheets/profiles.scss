@@ -2,11 +2,60 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.profile_avatar{
+.profile{
+  height: 50em;
 
-    // まるにする
-    border-radius: 50%;
-    width:  20em;
-    height: 20em;
-    border: 2px solid rgba(250, 120, 120, 1);
+  display: flex;
+
+  &_box{
+    margin-top: 16px;
+    margin-left: 16px;
+
+    height: 35em;
+    width: 25em;
+    border: solid 1px black;
+
+    text-align: center;
+
+      &_avatar{
+        justify-content: center;
+        margin-top: 2em;
+
+
+        // まるにする
+        border-radius: 50%;
+        width:  10em;
+        height: 10em;
+        border: 2px solid rgba(250, 120, 120, 1);
+      }
+
+      &_nickname{
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      &_introduction{
+        
+      }
+
+      &_editLink{
+        width: 15em;
+        height: 2em;
+        margin: 0 auto;
+
+
+        border: 5px, black;
+        background: rgb(152, 170, 159);
+
+        // editボタンの文字を中央寄せ
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  }
+
+  &_articles{
+    flex: 1;
+  }
+
 }

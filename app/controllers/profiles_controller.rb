@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @articles = Article.all
     @profile = current_user.profile
   end
 
