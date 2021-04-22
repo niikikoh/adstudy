@@ -18,6 +18,12 @@ class User < ApplicationRecord
   # profileの値をユーザー側で使用許可&nilをスキップ
   delegate :name, :bio, :avatar, to: :profile, allow_nil: true
 
+  # articleを書いたのは誰か
+  def has_written?(article)
+    articles.exists?(id: article.id)
+  end
+
+  # フォロー関連のメソッド
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
@@ -33,14 +39,17 @@ class User < ApplicationRecord
     self.following.include?(other_user)
   end
 
+  # articleの名前を表示
   def display_name
     profile&.name || email.split('@').first
   end
 
+  # profileがなかったら作る
   def prepare_profile
     profile || build_profile
   end
 
+  # avatarがなかったらデフォルトの画像を表示
   def avatar_image
     if @profile&.avatar&.present?
       @profile.avatar.to_s

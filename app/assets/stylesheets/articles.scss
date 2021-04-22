@@ -1,3 +1,5 @@
+@import './variables';
+
 $container-padding: 16px;
 
 .card_title{
@@ -5,11 +7,31 @@ $container-padding: 16px;
     font-style: bold;
 }
 
-.article_card{
-    background-color: white;
-    margin: 16px 16px;
-    padding: $container-padding;
-    position: relative;
+.article{
 
-    border: solid 1px black;
+    &_card{
+        background-color: white;
+        margin: 16px 16px;
+        padding: $container-padding;
+        position: relative;
+
+        border: solid 1px black;
+    }
+
+    &_data{
+      display: flex;
+    }
+
+    &_date{
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    &_actions{
+        display: flex;
+    }
+
+    &_header{
+        display: flex;
+    }
 }

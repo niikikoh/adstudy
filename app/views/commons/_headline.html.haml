@@ -1,0 +1,10 @@
+// アーティクルの目次をスクレイピングするレイアウトファイル
+.div
+  - contents = yield
+  %h1 目次
+  - node = Nokogiri::HTML.parse contents
+  %ul
+    - node.css('h2').each do |header|
+      %li= header.text
+  %h1 内容
+  = contents
