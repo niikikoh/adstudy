@@ -38,11 +38,10 @@
         
       }
 
-      &_editLink{
+      &_actions{
         width: 15em;
         height: 2em;
         margin: 0 auto;
-
 
         border: 5px, black;
         background: rgb(152, 170, 159);
@@ -51,6 +50,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        :hover{
+          opacity: 0.5;
+        }
       }
   }
 

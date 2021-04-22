@@ -5,6 +5,11 @@ class Article < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  validates :title, presence: true
+  validates :title, length: { minimum: 2, maximum: 100 }
+  validates :title, format: { with: /\A(?!@)/ }
+  validates :content, presence: true
+
   def author_name
     user.display_name
   end

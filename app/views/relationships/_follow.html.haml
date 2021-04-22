@@ -1,0 +1,5 @@
+- unless current_user == user
+	- if current_user.following?(user)
+		= link_to 'フォロー中', account_relationship_path(account_id: user.id), data: {method: 'delete'}
+	- else
+		= link_to 'フォロー', account_relationships_path(account_id: user.id), data: {method: 'post'}
