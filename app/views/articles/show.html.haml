@@ -1,20 +1,25 @@
 .article#article-show{data: {article_id: @article.id}}
 
-  %header
+  %header.article_data
     = link_to account_path(@article.user) do
       = image_tag(@article.user.avatar.to_s, class: 'header_avatar')
+    .article_date
+      %p= "#{@article.author_name}が#{@article.display_created_at}に投稿"
 
-    - if user_signed_in? && current_user.present?
-      = link_to '編集する', edit_article_path(@article)
-      = link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもいいですか？'}
-
-    %p= "#{@article.author_name}が#{@article.display_created_at}に投稿"
     // そのうちif文で更新も追加するかも
     // アバター画像からプロフィールに飛びたい
   
   %body
-    %h2.article_title
-      = @article&.title
-    
+    .article_header
+      %h2.article_title
+        = @article&.title
+
+      - if user_signed_in? && current_user.has_written?(@article)
+        .article_actions
+          .dropdown
+            = image_tag 'down-arrow.svg', class: 'dropbtn'
+            .dropdown-content.mini
+              = link_to '編集する', edit_article_path(@article)
+              = link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
     .article_content
       = @article&.content 
