@@ -1,19 +1,23 @@
 %body
   .profile
     .profile_box
-      - if @profile&.avatar&.present?
-        = image_tag @profile.avatar.to_s, class: 'profile_box_avatar'
+      - if user&.avatar&.present?
+        = image_tag user.avatar.to_s, class: 'profile_box_avatar'
       - else
         = image_tag 'default-avatar.png'
 
       .profile_box_nickname
-        %p= @profile&.name
+        %p= user&.name
 
       .profile_box_introduction
-        %p= @profile&.bio
+        %p= user&.bio
 
-      .profile_box_editLink
-        = link_to 'プロフィールを編集する', edit_profile_path(@profile)
+      .profile_box_actions
+        - if current_user == user
+          = link_to 'プロフィールを編集する', edit_profile_path(@profile)
+        - else
+          = render 'relationships/follow', user: @user
+          
 
     .profile_articles
       // profileのユーザーが投稿した記事一覧

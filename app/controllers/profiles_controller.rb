@@ -2,8 +2,9 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @articles = Article.all
+    @articles = current_user.articles.all.order('updated_at DESC')
     @profile = current_user.profile
+    @user = @profile.user
   end
 
   def new
