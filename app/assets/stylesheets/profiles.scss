@@ -5,6 +5,36 @@
 
   display: flex;
 
+  &_card{
+    display: flex;
+
+    &_nickname{
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    &_actions{
+      width: 8em;
+      height: 2em;
+      margin: 0 0 0 auto;
+      margin-top: 16px;
+      
+
+      border: solid 2px rgb(167, 207, 212);
+      background: rgb(255, 255, 255);
+      border-radius: 20px;
+
+      // editボタンの文字を中央寄せ
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      :hover{
+        opacity: 0.5;
+      }
+    }
+  }
+
   &_box{
     margin-top: 16px;
     margin-left: 16px;

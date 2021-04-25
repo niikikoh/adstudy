@@ -24,9 +24,20 @@
 
     .article_content
       = simple_format(h(@article&.content))
+
+    .profile_card
+      .profile_card_nickname
+        %p= @article.user&.name
+      - if current_user == @article.user
+        // 表示しない
+      - else
+        .profile_card_actions
+          = render 'relationships/follow', user: @article.user
+    .profile_box_introduction
+      %p= @article.user&.bio
+    %hr
     
     // コメントを閉じられるAjaxがあれば助かる？
-    %hr
     .centering
       %h3= 'コメント'
     - @comments.each do |comment|
