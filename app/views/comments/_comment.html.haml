@@ -1,0 +1,14 @@
+= @comments.each do |comment|
+  .commnet_card
+    %header
+      %p= {article.author_name}
+    %body
+      %h2.card_content
+        = comment&.content
+.comment_space
+  - if user_signed_in?
+    = form_with(model: [@article, @comment], local: true) do |f|
+      = f.text_area :content, class: "form-control", rows: 5
+      = button_tag type: "submit", class: "btn btn-success float-right mt-1" do
+        %i.far.fa-comments
+        コメントする

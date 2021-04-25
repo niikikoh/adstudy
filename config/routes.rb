@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'timelines#show'
+  root to: 'articles#index'
 
   devise_for :users
 
-  resources :articles
+  resources :articles do
+    resources :comments, only: [:create]
+  end
 
   resources :accounts, only: [:show] do
     resources :relationships, only: [:create, :destroy]

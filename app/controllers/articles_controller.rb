@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
+    @comments = @article.comments
+    @comment = Comment.new
   end
 
   def new
@@ -16,6 +18,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
+    @article.user_id = current_user.id
     if @article.save
       redirect_to article_path(@article), notice: '保存できました'
     else
