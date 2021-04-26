@@ -7,7 +7,18 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import axios from "axios"
+import $ from 'jquery'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('turbolinks:load', () => {
+    const dataset = $('#article-show').data()
+    const articleId = dataset.articleId
+    axios.get(`/articles/${articleId}/like`)
+      .then((response) => {
+          console.log(response)
+      })
+})

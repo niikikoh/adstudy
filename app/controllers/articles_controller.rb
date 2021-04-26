@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
     @comments = @article.comments
     @comment = Comment.new
 
-    @like = Like.new
+    @like = Like.new 
   end
 
   def new
