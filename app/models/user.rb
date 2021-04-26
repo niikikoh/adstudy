@@ -16,10 +16,13 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
+  # likesのアソシエーション
+  has_many :likes, dependent: :destroy
+  has_many :liked_articles, through: :likes, source: :article
+
   # profileの値をユーザー側で使用許可&nilをスキップ
   delegate :name, :bio, :avatar, to: :profile, allow_nil: true
 
-  # articleを書いたのは誰か
   def has_written?(article)
     articles.exists?(id: article.id)
   end
@@ -40,23 +43,25 @@ class User < ApplicationRecord
     self.following.include?(other_user)
   end
 
-  # articleの名前を表示
+  # profileでuserの名前を表示
   def display_name
     profile&.name || email.split('@').first
   end
 
-  # profileがなかったら作る
   def prepare_profile
     profile || build_profile
   end
 
-  # avatarがなかったらデフォルトの画像を表示
   def avatar_image
     if @profile&.avatar&.present?
       @profile.avatar.to_s
     else
       'default-avatar.png'
     end
+  end
+
+  def already_liked?(article)
+    self.likes.exists?(article_id: article.id)
   end
 
 end
