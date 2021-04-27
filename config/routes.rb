@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :articles do
-    resources :likes,    only: [:create, :destroy]
+    resource :like,    only: [:show, :create, :destroy]
     resources :comments, only: [:create]
   end
 

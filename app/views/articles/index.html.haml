@@ -1,1 +1,7 @@
-= render 'commons/articles', articles: @articles
+.outer
+  .tabs
+    = link_to 'ホーム', articles_path(current_user)
+    = link_to 'タイムライン', timeline_path(current_user)
+    = link_to 'プロフィール', profile_path(current_user)
+  .inner
+    = render 'commons/articles', articles: @articles
