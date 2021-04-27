@@ -21,13 +21,12 @@ const handleHeartDisplay = (alreadyLiked) => {
     if (alreadyLiked) {
         $('.active-heart').removeClass('hidden')
     } else {
-        $('non-active-heart').removeClass('hidden')
+        $('.non-active-heart').removeClass('hidden')
     }
 }
 
 document.addEventListener('turbolinks:load', () => {
     const dataset = $('#article-show').data()
-    debugger
     const articleId = dataset.articleId
 
     axios.get(`/articles/${articleId}/like`)
@@ -39,7 +38,10 @@ document.addEventListener('turbolinks:load', () => {
     $('.non-active-heart').on('click', () => {
         axios.post(`/articles/${articleId}/like`)
           .then((response) => {
-            console.log(response)
+            if (response.data.status === 'ok') {
+                $('.active-heart').removeClass('hidden')
+                $('.non-active-heart').addClass('hidden')
+            }
           })
           .catch((e) => {
               window.alert('error')
@@ -50,7 +52,10 @@ document.addEventListener('turbolinks:load', () => {
     $('.active-heart').on('click', () => {
         axios.delete(`/articles/${articleId}/like`)
           .then((response) => {
-            console.log(response)
+            if (response.data.status === 'ok') {
+                $('.active-heart').addClass('hidden')
+                $('.non-active-heart').removeClass('hidden')
+            }
           })
           .catch((e) => {
               window.alert('error')
