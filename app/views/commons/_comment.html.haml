@@ -1,0 +1,8 @@
+- if user_signed_in?
+  = form_with(model: [@user, @article, @comment], local: true) do |f|
+
+    = f.hidden_field :user_name
+
+    = f.text_area :content, class: 'comment_area'
+
+    = f.submit 'コメントする', class: 'comment_btn'
