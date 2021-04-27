@@ -9,16 +9,52 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import axios from "axios"
 import $ from 'jquery'
+import { csrfToken } from 'rails-ujs'
+
+axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+const handleHeartDisplay = (alreadyLiked) => {
+    if (alreadyLiked) {
+        $('.active-heart').removeClass('hidden')
+    } else {
+        $('non-active-heart').removeClass('hidden')
+    }
+}
+
 document.addEventListener('turbolinks:load', () => {
     const dataset = $('#article-show').data()
+    debugger
     const articleId = dataset.articleId
+
     axios.get(`/articles/${articleId}/like`)
       .then((response) => {
-          console.log(response)
+          const alreadyLiked = response.data.alreadyLiked
+          handleHeartDisplay(alreadyLiked)  
       })
+
+    $('.non-active-heart').on('click', () => {
+        axios.post(`/articles/${articleId}/like`)
+          .then((response) => {
+            console.log(response)
+          })
+          .catch((e) => {
+              window.alert('error')
+              console.log(e)
+          })
+    })
+
+    $('.active-heart').on('click', () => {
+        axios.delete(`/articles/${articleId}/like`)
+          .then((response) => {
+            console.log(response)
+          })
+          .catch((e) => {
+              window.alert('error')
+              console.log(e)
+          })
+    })
 })
