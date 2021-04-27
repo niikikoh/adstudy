@@ -11,7 +11,7 @@
           %p= user&.name
 
         .profile_box_introduction
-          %p= user&.bio
+          = simple_format(h(@profile&.bio))
 
         .profile_box_actions
           - if current_user == user
