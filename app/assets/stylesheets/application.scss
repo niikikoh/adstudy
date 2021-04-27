@@ -1,11 +1,14 @@
-@import 'header';
 @import 'articles';
 @import 'buttons';
-@import 'profiles';
-@import 'commons';
 @import 'comments';
+@import 'commons';
+@import 'form';
+@import 'header';
+@import 'profiles';
 @import 'tabs';
+
 @import '_variables';
+@import 'trix/dist/trix/.css';
 
 @import 'font-awesome-sprockets';
 @import 'font-awesome';

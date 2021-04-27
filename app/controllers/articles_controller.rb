@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.build(article_params)
     @article.user_id = current_user.id
-    if @article.save
+    if @article.save!
       redirect_to article_path(@article), notice: '保存できました'
     else
       flash.now[:error] = '保存に失敗しました'
@@ -55,6 +55,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :image)
+    params.require(:article).permit(:title, :content, images: [])
   end
 end
