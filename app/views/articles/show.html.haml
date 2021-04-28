@@ -22,7 +22,7 @@
     .article_content
       = simple_format(h(@article&.content))
 
-    .like_hundler
+    .like_handler
       = render 'commons/like', article: @article
 
     %hr
