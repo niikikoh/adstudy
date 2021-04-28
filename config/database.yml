@@ -18,3 +18,4 @@ production:
   database: adstudy_production
   username: adstudy
   password: <%= ENV['ADSTUDY_DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>

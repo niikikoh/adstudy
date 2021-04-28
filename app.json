@@ -1,16 +1,16 @@
 {
-    "name": "adstudy",
-    "description": "This is adstudy",
-    "keywords": [],
-    "website": "",
-    "repository": "https://github.com/niikikoh/adstudy",
-    "env": {},
-    "addons": [
-      "heroku-postgresql:hobby-dev"
-    ],
-    "buildpacks": [{
-      "url": "heroku/nodejs"
-    }, {
-      "url": "heroku/ruby"
-    }]
-  }
+  "name": "adstudy",
+  "description": "This is adstudy",
+  "keywords": [],
+  "website": "",
+  "repository": "https://github.com/niikikoh/adstudy",
+  "env": {},
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "buildpacks": [{
+    "url": "heroku/nodejs"
+  }, {
+    "url": "heroku/ruby"
+  }]
+}
