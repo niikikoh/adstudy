@@ -8,7 +8,7 @@ class User < ApplicationRecord
   
   has_one :profile,   dependent: :destroy
   has_many :articles, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   # followのアソシエーション
   has_many :relationships

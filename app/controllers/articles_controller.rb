@@ -45,9 +45,9 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @articles = current_user.articles.find(params[:id])
-    article = Article.find(@arams[:id])
+    article = Article.find(params[:id])
     article.destroy!
     redirect_to root_path, notice: '削除できました'
   end
