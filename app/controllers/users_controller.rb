@@ -1,4 +1,4 @@
-class UsersController < ApplicationController::Base64
+class UsersController < ApplicationController::Base
 
   private
   def user_params
