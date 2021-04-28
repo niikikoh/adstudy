@@ -44,7 +44,10 @@
           .commnet_card
             = link_to account_path(comment.user) do
               .article_icons
-                = image_tag(comment.user.avatar.to_s, class: 'article_avatar')
+                - if @profile&.avatar&.present?
+                  = @profile.avatar.to_s
+                - else
+                  = image_tag asset_path('default-avatar.png')
                 .article_data
                   .article_author
                     %p= "#{comment.user.name}"

@@ -56,7 +56,7 @@ class User < ApplicationRecord
     if @profile&.avatar&.present?
       @profile.avatar.to_s
     else
-      = image_tag asset_path('default-avatar.png')
+      image_tag asset_path('default-avatar.png')
     end
   end
 

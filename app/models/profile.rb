@@ -8,7 +8,7 @@ class Profile < ApplicationRecord
     if @profile&.avatar&.present?
       @profile.avatar.to_s
     else
-      'default-avatar.png'
+      asset_path('default-avatar.png')
     end
   end
 
