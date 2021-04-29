@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   resources :articles do
     resource :like,      only: [:show, :create, :destroy]
-    resources :payments,  only: [:create]
     resources :comments, only: [:create]
   end
 
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   resource :profile,  only: [:show, :new, :create, :edit, :update]
 
   # Stripeのルーティング
-  
+  resources :payments
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -18,6 +18,8 @@
       %div
         = f.rich_text_area :content, placeholder: '学習した内容を書いてみよう'
 
-        
+      %div
+        = f.number_field :price, min: 0, placeholder: '値段'
+
       %div
         = f.submit '保存', class: 'btn-primary'
