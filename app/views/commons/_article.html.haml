@@ -3,6 +3,43 @@
     .article_card
       %header
         %p= "#{article.author_name}が#{article.display_created_at}に投稿"
+
+      %div
+        = form_tag payments_path, id:"payForm" do
+          %script{:src => "https://checkout.stripe.com/checkout.js"}
+          = hidden_field_tag 'stripeToken'
+          = hidden_field_tag 'amount', 500
+          = hidden_field_tag 'stripeEmail'
+          / ユーザーのID
+          = hidden_field_tag 'user_id', current_user.id
+          / この支払いのインスタンスを特定
+          = hidden_field_tag "article_id", article.id
+          :javascript
+            // #ボタンを押した際のcheckoutのフォームはStripeCheckout.configureで設定する
+              var handler = StripeCheckout.configure({
+                  //StripeのAPIキーを引っ張ってくる
+                  key: ENV['STRIPE_PUBLISHABLE_KEY'],
+                  locale: 'auto', //言語の設定（autoの場合、ユーザのブラウザ規定言語が呼び出される）
+                  currency: 'jpy',
+                  // image: "image/directory", もしstripe checkoutのフォーム上部に画像を入れたい場合はここで指定する
+                  panelLabel: "のお支払い", //checkoutボタンの表示文字、の中に金額が入る
+                  allowRememberMe: false, //RememberMeを使いたい場合はここをtrueにする
+                  token: function(token,arg) { //ここでstripeTokenとstripeEmailに値を入れてsubmitする
+                      document.getElementById('stripeToken').value = token.id;
+                      document.getElementById('stripeEmail').value = token.email;
+                      document.getElementById('payForm').submit();
+                  }
+              });
+              //Stripe Checkoutのフォームに表示される情報をここで指定する
+              document.getElementById('btn-pay').addEventListener('click', function(e){
+                  handler.open({
+                      title: '#{article.title}',
+                      description: '#{500}円',
+                      amount: document.getElementById("amount").value
+                  });
+                  e.preventDefault();
+              })
+
       %body
         .card
           %h2.card_title

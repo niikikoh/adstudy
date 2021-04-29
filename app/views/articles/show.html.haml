@@ -21,6 +21,10 @@
 
     .article_content
       = simple_format(h(@article&.content))
+    
+    %p= "¥#{@article.price}"
+    .price_tag
+      = render 'commons/payment', article: @article
 
     .like_handler
       = render 'commons/like', article: @article
