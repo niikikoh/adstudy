@@ -1,8 +1,18 @@
-- if user_signed_in?
-  = form_with(model: [@user, @article, @comment], local: true) do |f|
+- @comments.each do |comment|
+  .container
+    .commnet_card
+      = link_to account_path(comment.user) do
+        .f-container
+          %p.comments_author= "#{comment.user.name}"
+          %p.comment_date= "#{comment.created_at}"
+      = simple_format(h(comment.content))
+  %hr
+.comment_form
+  - if user_signed_in?
+    = form_with(model: [@user, @article, @comment], local: true) do |f|
 
-    = f.hidden_field :user_name
+      = f.hidden_field :user_name
 
-    = f.text_area :content, class: 'comment_area'
+      = f.text_area :content, class: 'comment_area'
 
-    = f.submit 'コメントする', class: 'comment_btn'
+      = f.submit 'コメントする', class: 'comment_btn'

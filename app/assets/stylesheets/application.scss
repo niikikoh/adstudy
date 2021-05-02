@@ -3,6 +3,7 @@
 @import 'comments';
 @import 'commons';
 @import 'form';
+@import 'layouts';
 @import 'header';
 @import 'profiles';
 @import 'tabs';
@@ -18,30 +19,30 @@ a{
     color: black;
 }
 
-.f-container{
-    display: flex;
-    vertical-align: top;
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    margin: 20px 0px 20px 0px;
 }
 
 .hidden{
     display: none;
 }
 
-.outer{
-    width: auto;
-    height: auto;
-    
+.f-container{
     display: flex;
-    background-color: rgb(237, 237, 237);
 }
 
+.vertical{
+    display: flex;
+    flex-direction: column;
+}
 
-.inner{
-    width: 60%;
-    height: auto;
-
-    margin: 0 10% 0 10%;
-    padding: 0 1% 0 1%;
-
-    background-color: rgb(255, 255, 255);
+.centering{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

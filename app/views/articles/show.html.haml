@@ -1,39 +1,27 @@
 .article#article-show{ data: {article_id: @article.id} }
   .outer
-    .l-sidebar
+    .sidebar
       = render 'commons/tabs'
     .inner
+      .container
+        .article_elements
+          = render 'commons/article', article: @article
+        
+          .price_tag
+            = render 'commons/payment', article: @article
+   
+        .like_handler
+          = render 'commons/like', article: @article
+          
+      .container
+        .profile_cards.f-container
+          = render 'profiles/card', article: @article
+          // 非同期処理のフォローで画面遷移しないボタン設置?
       %hr
-      .article_elements
-        = render 'commons/article', article: @article
-      
-        %p= "¥#{@article.price}"
-        .price_tag
-          = render 'commons/payment', article: @article
+      .container
+        .comment_space
+          %h2= 'コメント'
 
-      .like_handler
-        = render 'commons/like', article: @article
-      %hr
-
-      .profile_cards.f-container
-        = render 'profiles/card', article: @article
-        // 非同期処理のフォローで画面遷移しないボタン設置?
-      %hr
-      
-      .comment_space
-        %h2= 'コメント'
-
-        .comment_content
-          - @comments.each do |comment|
-            .commnet_card
-              = link_to account_path(comment.user) do
-                .article_data
-                  .article_author
-                    %p= "#{comment.user.name}"
-                  .article_date
-                    %p= "#{comment.created_at}"
-                = simple_format(h(comment.content))
-              %hr
-          .comment_form
-            = render 'commons/comment'
-      .l-sidebar
+          .comment_content
+            = render 'commons/comment', comments: @comments
+    .sidebar

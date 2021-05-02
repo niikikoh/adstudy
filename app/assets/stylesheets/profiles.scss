@@ -1,90 +1,27 @@
 @import './variables';
 
-.profile{
-  height: 50em;
+.profile_sidebar{
+  width: 40em;
+  height: 70em;
+  margin: 10px 10px;
 
-  display: flex;
+  text-align: center;
+}
 
-  &_card{
-    display: flex;
-
-    &_nickname{
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    &_actions{
-      width: 8em;
-      height: 2em;
-      margin: 0 0 0 auto;
-      margin-top: 16px;
-      
-
-      border: solid 2px rgb(167, 207, 212);
-      background: rgb(255, 255, 255);
-      border-radius: 20px;
-
-      // editボタンの文字を中央寄せ
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      :hover{
-        opacity: 0.5;
-      }
-    }
-  }
-
-  &_box{
-    margin: 10px 10px;
-
-    height: 30em;
+.btn_handler{
     width: 300px;
-    border: solid 1px black;
+    height: 40px;
+    margin: 0 auto;
 
-    text-align: center;
+    border: 5px, black;
+    background: rgb(255, 255, 255);
 
-    &_avatar{
-      justify-content: center;
-      margin-top: 2em;
+    // editボタンの文字を中央寄せ
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-
-      // まるにする
-      border-radius: 50%;
-      width:  10em;
-      height: 10em;
-      border: 2px solid rgba(250, 120, 120, 1);
-    }
-
-    &_nickname{
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    &_introduction{
-      
-    }
-
-    &_actions{
-      width: 15em;
-      height: 2em;
-      margin: 0 auto;
-
-      border: 5px, black;
-      background: rgb(152, 170, 159);
-
-      // editボタンの文字を中央寄せ
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      :hover{
-        opacity: 0.5;
-      }
-    }
-  }
-
-  &_articles{
-    flex: 1;
+  :hover{
+    opacity: 0.5;
   }
 }
