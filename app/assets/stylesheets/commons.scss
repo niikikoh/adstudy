@@ -1,26 +1,30 @@
 @import './variables';
 
-.dropbtn {
-    @import './variables';
-    border: none;
-    width: 2em;
+.dropdown {
+  
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
+.dropbtn {
+  position: absolute;
+  padding: 20px 0 0;
+  right: 20%;
+  
+  border: none;
+  width: 2em;
 }
-@import './variables';
 
 .dropdown-content {
-  font-weight: normal;
-  display: none;
-  right: 0;
+  right: 20%;
   position: absolute;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  margin: 3em 0 0 0;
+
   z-index: 1;
+  min-width: 160px;
+
+  display: none;
+  font-weight: normal;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 
   &.mini {
     min-width: 100px;
@@ -28,9 +32,9 @@
 }
 
 .dropdown-content a {
+  display: block;
   padding: 8px 16px;
   text-decoration: none;
-  display: block;
   color: $text-base-color;
 }
 

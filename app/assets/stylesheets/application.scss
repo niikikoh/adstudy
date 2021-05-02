@@ -18,6 +18,30 @@ a{
     color: black;
 }
 
+.f-container{
+    display: flex;
+    vertical-align: top;
+}
+
 .hidden{
     display: none;
+}
+
+.outer{
+    width: auto;
+    height: auto;
+    
+    display: flex;
+    background-color: rgb(237, 237, 237);
+}
+
+
+.inner{
+    width: 60%;
+    height: auto;
+
+    margin: 0 10% 0 10%;
+    padding: 0 1% 0 1%;
+
+    background-color: rgb(255, 255, 255);
 }

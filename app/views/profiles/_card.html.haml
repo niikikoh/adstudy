@@ -1,0 +1,5 @@
+.profile_card_elements
+  .profile_card_nickname
+    %p= article.user&.name
+  .profile_box_introduction
+    = simple_format(h(article.user&.bio))

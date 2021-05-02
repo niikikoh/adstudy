@@ -1,0 +1,9 @@
+%span
+  %i.fas.fa-home.fa-lg
+  = link_to 'ホーム', articles_path(current_user)
+%span
+  %i.fas.fa-stream.fa-lg
+  = link_to 'タイムライン', timeline_path(current_user)
+%span
+  %i.fas.fa-user-alt.fa-lg
+  = link_to 'プロフィール', profile_path(current_user)
