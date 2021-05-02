@@ -1,3 +1,12 @@
 .container
   - @articles.each do |article|
-    = render 'commons/article', article: article
+    .inner
+      = link_to article_path(article) do
+        .article_card
+          %header
+            %p= "#{article.author_name}が#{article.display_created_at}に投稿"
+
+          %body
+            .card
+              %h2.card_title
+                = article&.title

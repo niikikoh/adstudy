@@ -1,62 +1,39 @@
 .article#article-show{ data: {article_id: @article.id} }
-  .inner
-    .article_header
-      %h2.article_title
-        = @article&.title
-      .article_actions
-        - if user_signed_in? && current_user.has_written?(@article)
-          .dropdown
-            = image_tag 'down-arrow.svg', class: 'dropbtn'
-            .dropdown-content.mini
-              = link_to '編集する', edit_article_path(@article)
-              = link_to '削除する', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
+  .outer
+    .l-sidebar
+      = render 'commons/tabs'
+    .inner
+      %hr
+      .article_elements
+        = render 'commons/article', article: @article
+      
+        %p= "¥#{@article.price}"
+        .price_tag
+          = render 'commons/payment', article: @article
 
-    = link_to account_path(@article.user), class: 'article_icons' do
-      = image_tag(@article.user.avatar.to_s, class: 'article_avatar')
-      .article_data
-        .article_author
-          %p= "#{@article.author_name}"
-        .article_date
-          %p= "#{@article.display_created_at}"
+      .like_handler
+        = render 'commons/like', article: @article
+      %hr
 
-    .article_content
-      = simple_format(h(@article&.content))
-    
-    %p= "¥#{@article.price}"
-    .price_tag
-      = render 'commons/payment', article: @article
+      .profile_cards.f-container
+        = render 'profiles/card', article: @article
+        // 非同期処理のフォローで画面遷移しないボタン設置?
+      %hr
+      
+      .comment_space
+        %h2= 'コメント'
 
-    .like_handler
-      = render 'commons/like', article: @article
-
-    %hr
-    .profile_cards
-      .profile_card_nickname
-        %p= @article.user&.name
-      - if current_user != @article.user
-        .profile_card_actions
-          = render 'relationships/follow', user: @article.user
-      .profile_box_introduction
-        %p= @article.user&.bio
-    %hr
-    
-    .comment_space
-      %h3.centering= 'コメント'
-
-      .comment_content
-        - @comments.each do |comment|
-          .commnet_card
-            = link_to account_path(comment.user) do
-              .article_icons
-                - if @profile&.avatar&.present?
-                  = @profile.avatar.to_s
-                - else
-                  = image_tag asset_path('default-avatar.png')
+        .comment_content
+          - @comments.each do |comment|
+            .commnet_card
+              = link_to account_path(comment.user) do
                 .article_data
                   .article_author
                     %p= "#{comment.user.name}"
                   .article_date
                     %p= "#{comment.created_at}"
-            %p= comment.content
-      .comment_form
-        = render 'commons/comment'
+                = simple_format(h(comment.content))
+              %hr
+          .comment_form
+            = render 'commons/comment'
+      .l-sidebar
