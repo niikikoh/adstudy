@@ -1,7 +1,6 @@
 .outer
-  .tabs
-    = link_to 'ホーム', articles_path(current_user)
-    = link_to 'タイムライン', timeline_path(current_user)
-    = link_to 'プロフィール', profile_path(current_user)
+  .sidebar
+    = render 'commons/tabs'
   .inner
     = render 'commons/articles', articles: @articles
+  .sidebar

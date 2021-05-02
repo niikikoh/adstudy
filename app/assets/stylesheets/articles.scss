@@ -10,7 +10,7 @@ $container-padding: 16px;
 .article{
 
     &_card{
-        width: 110%;
+        width: 85%;
 
         background-color: white;
         margin: 16px 16px;
@@ -33,25 +33,14 @@ $container-padding: 16px;
         border: 10px solid rgb(255, 255, 255);
     }
 
-    &_icons{
-      display: flex;
-      vertical-align: top;
-      margin-bottom: 20px;
-    }
-
     &_author{
         font-size: 15px;
-    }
-
-    &_data{
-        display: flex;
-        padding: 0 0 0 0;
+        margin: 8px 0 10px 10px;
     }
 
     &_date{
-        padding: 13px 0 0 20px;
         font-size: 5px;
-        margin-left: 5px;
+        margin: 0 0 0 10px;
         opacity: 0.5;
     }
 

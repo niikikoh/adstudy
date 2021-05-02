@@ -1,14 +1,24 @@
 @import './variables';
 
-.l-sidebar{
-    height: 15%;
+.tabs{
+    height: 10em;
+    transform: translate(0px, 0px);
+}
 
+.tab{
+    writing-mode: horizontal-tb;
+    block-size: 10em;
 
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+.block_btn{
+    display: block;
+    text-align: center;
 
     :hover{
-        opacity: 0.7;
+        background-color: rgb(255, 255, 255);
     }
 }

@@ -1,27 +1,22 @@
-%body
-  .profile
-    .profile_left
-      .profile_box
-        - if user&.avatar&.present?
-          = image_tag user.avatar.to_s, class: 'profile_box_avatar'
-        - else
-          = image_tag asset_path('default-avatar.png'), class: 'profile_box_avatar'
+.outer
+  .profile_sidebar
+    .container
+      - if user&.avatar&.present?
+        .centering
+          = image_tag user.avatar.to_s, class: 'circle_icon_lg'
+      - else
+        .centering
+          = image_tag asset_path('default-avatar.png'), class: 'circle_icon_lg'
 
-        .profile_box_nickname
-          %p= user&.name
-
-        .profile_box_introduction
-          = simple_format(h(@profile&.bio))
-
-        .profile_box_actions
-          - if current_user == user
-            = link_to 'プロフィールを編集する', edit_profile_path(@profile)
-          - else
-            = render 'relationships/follow', user: @profile.user
-        
-    .profile_articles
-      // profileのユーザーが投稿した記事一覧
+      %h4.centering= user&.name
+      .container
+        = simple_format(h(@profile&.bio))
+    
+    .btn_handler
+      - if current_user == user
+        = link_to '編集する', edit_profile_path(@profile)
+      - else
+        = render 'relationships/follow', user: @profile.user
+  .inner
+    .container
       = render 'commons/articles'
-
-    .bookmarks
-    // ブックマークした記事を表示

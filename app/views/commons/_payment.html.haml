@@ -1,3 +1,4 @@
+%p= "¥#{article.price}"
 = form_tag payments_path, id:"payForm" do
     %script{:src => "https://checkout.stripe.com/checkout.js", class: 'stripe-button'}
         = hidden_field_tag 'stripeToken'
