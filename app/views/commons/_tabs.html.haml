@@ -1,10 +1,7 @@
-.tabs.vertical.block_btn
-  %div.tab
+%main.tabs.vertical.block_btn
+  %aside.tab
     %i.fas.fa-home.fa-lg
     = link_to 'ホーム', articles_path(current_user)
-  %div.tab
+  %aside.tab
     %i.fas.fa-stream.fa-lg
     = link_to 'タイムライン', timeline_path(current_user)
-  %div.tab
-    %i.fas.fa-user-alt.fa-lg
-    = link_to 'プロフィール', profile_path(current_user)

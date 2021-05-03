@@ -1,14 +1,14 @@
-.outer
-  .profile_sidebar
+%main.outer
+  %section.profile_sidebar
     .container
       - if user&.avatar&.present?
-        .centering
+        %center
           = image_tag user.avatar.to_s, class: 'circle_icon_lg'
       - else
-        .centering
+        %center
           = image_tag asset_path('default-avatar.png'), class: 'circle_icon_lg'
 
-      %h4.centering= user&.name
+      %center= user&.name
       .container
         = simple_format(h(@profile&.bio))
     
@@ -17,6 +17,5 @@
         = link_to '編集する', edit_profile_path(@profile)
       - else
         = render 'relationships/follow', user: @profile.user
-  .inner
-    .container
-      = render 'commons/articles'
+  %section.inner
+    = render 'commons/articles'
