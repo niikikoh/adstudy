@@ -18,7 +18,7 @@ class PaymentsController < ApplicationController
             redirect_to article_path(params[:id]), notice: "購入しました"
         end
         rescue Stripe::CardError => e
-            flash[:error] = e.message,
+            flash[:error] = e.message
             redirecto_to article_path(@article)
         end
     end
@@ -27,30 +27,30 @@ class PaymentsController < ApplicationController
     rescue Stripe::CardError => e
         flash[:error] = "#決済(stripe)でエラーが発生しました。{e.message}"
         render :new
-
+    end
     # Invalid parameters were supplied to Stripe's API
     rescue Stripe::InvalidRequestError => e
         flash.now[:error] = "決済(stripe)でエラーが発生しました（InvalidRequestError）#{e.message}"
         render :new
-
+    end
     # Authentication with Stripe's API failed(maybe you changed API keys recently)
     rescue Stripe::AuthenticationError => e
         flash.now[:error] = "決済(stripe)でエラーが発生しました（AuthenticationError）#{e.message}"
         render :new
-
+    end
     # Network communication with Stripe failed
     rescue Stripe::APIConnectionError => e
         flash.now[:error] = "決済(stripe)でエラーが発生しました（APIConnectionError）#{e.message}"
         render :new
-
+    end
     # Display a very generic error to the user, and maybe send yourself an email
     rescue Stripe::StripeError => e
         flash.now[:error] = "決済(stripe)でエラーが発生しました（StripeError）#{e.message}"
         render :new
-
+    end
     # stripe関連以外でエラーが起こった場合
     rescue => e
         flash.now[:error] = "エラーが発生しました#{e.message}"
         render :new
-        end
+    end
 end
