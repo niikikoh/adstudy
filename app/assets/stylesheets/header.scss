@@ -16,8 +16,13 @@
         width: 150px;
         height: 20px;
         position: relative;
+        margin: 0 0 0 auto;
         padding: 10px;
-        margin: auto;
+        
+
+        transform: translate(50%, 50%);
+        -webkit-transform: translate(0%, 8%);
+        transform: translate(-50%, 25%);
 
         display: flex;
         justify-content: center;

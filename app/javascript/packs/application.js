@@ -27,6 +27,17 @@ document.addEventListener('turbolinks:load', function() {
     const btn = document.getElementById('dropdown__btn');
     if(btn) {
         btn.addEventListener('click', function(){
+            console.log('aaaa')
+            this.classList.toggle('is-open');
+        })
+    }
+})
+
+document.addEventListener('turbolinks:load', function() {
+    const btn = document.getElementById('article__btn');
+    if(btn) {
+        btn.addEventListener('click', function(){
+            console.log('aaaa')
             this.classList.toggle('is-open');
         })
     }
