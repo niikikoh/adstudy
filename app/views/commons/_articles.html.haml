@@ -1,7 +1,7 @@
-.container
+%main.container
   - @articles.each do |article|
-    = link_to article_path(article) do
-      .article_card
+    %article.article_card
+      = link_to article_path(article) do
         .article_data
           %p= "#{article.author_name}が#{article.display_created_at}に投稿"
         %h3.article_title

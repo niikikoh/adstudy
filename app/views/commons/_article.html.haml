@@ -1,26 +1,28 @@
-.container
-  .f-container
-    %h2.article_title
-      = article&.title
-    - if user_signed_in? && current_user.has_written?(article)
-      .dropdown
-        = image_tag 'down-arrow.svg', class: 'dropbtn'
-        .dropdown-content.mini
-          = link_to '編集する', edit_article_path(article)
-          = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
+.f-container
+  %h2.article_title
+    = article&.title
+  - if user_signed_in? && current_user.has_written?(article)
+    %div.dropdown
+      %button#dropdown__btn.dropdown__btn
+        = image_tag asset_path('down-arrow.svg')
+      %div.dropdown__body
+        %ul.dropdown__list
+          %li.dropdown__item
+            = link_to '編集する', edit_article_path(article)
+          %li.dropdown__item
+            = link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもいいですか？'} 
 
-.container
-  = link_to account_path(article.user), class: 'f-container' do
+%section.f-container
+  = link_to account_path(article.user) do
     - if article.user&.avatar&.present?
       = image_tag article.user.avatar.to_s, class: 'circle_icon'
     - else
       = image_tag asset_path('default-avatar.png'), class: 'circle_icon'
-    .f-container.vertical
-      .article_author
-        %p= "#{article.author_name}"
-      .article_date
-        %p= "#{article.display_created_at}"
-
-.container
-  .article_content
-    = simple_format(h(article&.content))
+  .f-container.vertical
+    .article_author
+      %p= "#{article.author_name}"
+    .article_date
+      %p= "#{article.display_created_at}"
+      
+.article_content
+= simple_format(h(article&.content))

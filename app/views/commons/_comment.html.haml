@@ -1,6 +1,6 @@
-- @comments.each do |comment|
-  .container
-    .commnet_card
+%ul.comment_contents
+  - @comments.each do |comment|  
+    %li.commnet_card.container
       = link_to account_path(comment.user) do
         .f-container
           %p.comments_author= "#{comment.user.name}"

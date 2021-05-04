@@ -3,25 +3,22 @@
     .sidebar
       = render 'commons/tabs'
     .inner
-      .container
-        .article_elements
+      %main.container
+        %section.article_header
           = render 'commons/article', article: @article
         
-          .price_tag
-            = render 'commons/payment', article: @article
-   
-        .like_handler
+        %section.price_tag
+          = render 'commons/payment', article: @article
+    
+        %section.like_handler
           = render 'commons/like', article: @article
           
-      .container
-        .profile_cards.f-container
-          = render 'profiles/card', article: @article
-          // 非同期処理のフォローで画面遷移しないボタン設置?
-      %hr
-      .container
-        .comment_space
+        %aside.profile_cards
+          .f-container
+            = render 'profiles/card', article: @article
+            // 非同期処理のフォローで画面遷移しないボタン設置?
+          %hr
+        %section.comment_space
           %h2= 'コメント'
-
-          .comment_content
-            = render 'commons/comment', comments: @comments
+          = render 'commons/comment', comments: @comments
     .sidebar

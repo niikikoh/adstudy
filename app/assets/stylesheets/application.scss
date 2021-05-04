@@ -24,6 +24,10 @@ a{
     padding: 0;
 }
 
+ul{
+    list-style: none;
+}
+
 .container{
     margin: 20px 0px 20px 0px;
 }
@@ -39,10 +43,4 @@ a{
 .vertical{
     display: flex;
     flex-direction: column;
-}
-
-.centering{
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }

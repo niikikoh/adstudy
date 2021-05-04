@@ -1,21 +1,36 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
+//
+//= require jquery
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require_tree .
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import 'bootstrap';
 import axios from "axios"
 import $ from 'jquery'
 import { csrfToken } from 'rails-ujs'
+
+require("trix")
+require("@rails/actiontext")
 
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('turbolinks:load', function() {
+    const btn = document.getElementById('dropdown__btn');
+    if(btn) {
+        btn.addEventListener('click', function(){
+            this.classList.toggle('is-open');
+        })
+    }
+})
 
 const handleHeartDisplay = (alreadyLiked) => {
     if (alreadyLiked) {
@@ -64,5 +79,3 @@ document.addEventListener('turbolinks:load', () => {
     })
 })
 
-require("trix")
-require("@rails/actiontext")
