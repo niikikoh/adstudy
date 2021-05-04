@@ -4,7 +4,7 @@
   - if user_signed_in? && current_user.has_written?(article)
     %div.dropdown
       %button#dropdown__btn.dropdown__btn
-        = image_tag 'down-arrow.svg', class: 'dropdown__btn'
+        = image_tag asset_path('down-arrow.svg')
       %div.dropdown__body
         %ul.dropdown__list
           %li.dropdown__item
