@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
             customer: customer.id,
             amount: @article.price,
             description: "number:#{@article.id} title:#{@article.name}",
-            currency: "jpy"
+            currency: "jpy",
         })
 
         # 売れた時の処理
@@ -18,9 +18,8 @@ class PaymentsController < ApplicationController
             redirect_to article_path(params[:id]), notice: "購入しました"
         end
         rescue Stripe::CardError => e
-            flash[:error] = e.message
+            flash[:error] = e.message,
             redirecto_to article_path()
         end
     end
-    
 end
