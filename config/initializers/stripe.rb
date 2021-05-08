@@ -15,5 +15,3 @@ if Rails.env.production?
         :secret_key      => ENV['STRIPE_SECRET_KEY_PRODUCTION']
     }
 end
-
-Stripe.api_key = Rails.configuration.stripe[:secret_key]
