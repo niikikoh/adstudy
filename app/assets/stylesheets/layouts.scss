@@ -6,6 +6,8 @@
 
 .inner{
     width: 80%;
+    height: auto;
+    min-height: 70em;
     padding: 0 10px 0 10px;
 
     background-color: rgb(255, 255, 255);
@@ -13,6 +15,8 @@
 
 .sidebar{
     width: 13em;
-    height: 70em;
+    height: auto;
+
+    min-height: 70em;
     background-color: rgb(237, 237, 237);
 }
