@@ -1,17 +1,18 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+%main.login_window
+  %section.title_area
+    %center Adstudy
+    %center 学生のための学習教材プラットフォーム
+  %section.form_area
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .email_area
+        %p Eメール 
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'text_holder', placeholder: ''
+      
+      .password_area
+        %p パスワード
+        = f.password_field :password, autocomplete: "current-password", class: 'text_holder', placeholder: ''
+
+      .field.f-container
+        = f.submit "ログイン", class: 'btn btn_flat'
+      = link_to 'ゲストログインする', user_guest_sign_in_path, method: :post
+      = render "devise/shared/links"

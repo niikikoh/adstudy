@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  devise_scope :user do
+    post 'user/guest_sign_in', to: 'user/sessions#guest_sign_in'
+  end
+
   resources :articles do
     resource :like,      only: [:show, :create, :destroy]
     resources :comments, only: [:create]

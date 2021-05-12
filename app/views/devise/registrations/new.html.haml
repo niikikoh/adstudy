@@ -1,29 +1,24 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
+%main.login_window
+  %section.title_area
+    %center Adstudy
+    %center 学生のための学習教材プラットフォーム
+  %section.form_area
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .email_area
+        %p Eメール 
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'text_holder', placeholder: ''
+      
+      .password_area
+        %p パスワード
+        = f.password_field :password, autocomplete: "current-password", class: 'text_holder', placeholder: ''
+      
+      .confirm_field
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: 'text_holder', placeholder: ''
 
-  //Eメール
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-
-  //パスワード
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-
-  //パスワード確認
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  
-  //保存
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+      .field.f-container
+        = f.submit "新規登録", class: 'btn btn_flat'
+      
+      = link_to 'ゲストログインする', user_guest_sign_in_path, method: :post
+      = render "devise/shared/links"
