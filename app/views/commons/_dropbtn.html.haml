@@ -1,0 +1,9 @@
+- if user_signed_in? && current_user.has_written?(article)
+	%button#article__btn.dropdown__btn
+		= image_tag asset_path('down-arrow.svg')
+	%div.dropdown__body--article
+		%ul.dropdown__list
+			%li.dropdown__item
+				%center= link_to '編集する', edit_article_path(article)
+			%li.dropdown__item
+				%center= link_to '削除する', article_path(article), data: { method: 'delete', confirm: '本当に削除してもいいですか？'}

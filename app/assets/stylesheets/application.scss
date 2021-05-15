@@ -1,18 +1,21 @@
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'trix/dist/trix/.css';
+
+@import '_variables';
+
 @import 'articles';
 @import 'buttons';
 @import 'comments';
 @import 'commons';
+@import 'flash';
 @import 'form';
 @import 'layouts';
+@import 'login';
+@import 'likes';
 @import 'header';
 @import 'profiles';
 @import 'tabs';
-
-@import '_variables';
-@import 'trix/dist/trix/.css';
-
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
 
 a{
     text-decoration: none;
@@ -29,7 +32,7 @@ ul{
 }
 
 .container{
-    margin: 20px 0px 20px 0px;
+    margin: 50px 0px 50px 0px;
 }
 
 .hidden{

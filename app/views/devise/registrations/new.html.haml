@@ -1,6 +1,6 @@
 %main.login_window
   %section.title_area
-    %center Adstudy
+    %center.app_title Adstudy
     %center 学生のための学習教材プラットフォーム
   %section.form_area
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -13,12 +13,12 @@
         = f.password_field :password, autocomplete: "current-password", class: 'text_holder', placeholder: ''
       
       .confirm_field
-        = f.label :password_confirmation
-        %br/
+        %p パスワード確認
         = f.password_field :password_confirmation, autocomplete: "new-password", class: 'text_holder', placeholder: ''
 
       .field.f-container
         = f.submit "新規登録", class: 'btn btn_flat'
-      
-      = link_to 'ゲストログインする', user_guest_sign_in_path, method: :post
-      = render "devise/shared/links"
+        = link_to 'ゲストログインする', user_guest_sign_in_path, method: :post, class: 'addition_btn_guest'
+
+      %center.addition_btn_transition
+        = render "devise/shared/links"

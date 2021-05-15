@@ -14,7 +14,12 @@ class Users::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました'
+    if user.save
+      redirect_to root_path, notice: 'ゲストユーザーとしてログインしました', class: 'alert alert-info'
+    else
+      flash.now[:error] = 'ゲストユーザとしてログインできませんでいた'
+      render :new
+    end
   end
 
   # DELETE /resource/sign_out

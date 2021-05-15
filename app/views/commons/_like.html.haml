@@ -1,5 +1,18 @@
-- if user_signed_in?
-  .article_heart.hidden.active-heart
-    = image_tag 'active-heart.svg'
-  .article_heart.hidden.non-active-heart
-    = image_tag 'non-active-heart.svg'
+.f-container
+
+  = link_to account_path(article.user) do
+    - if article.user&.avatar&.present?
+      = image_tag article.user.avatar.to_s, class: 'circle_icon'
+    - else
+      = image_tag asset_path('default-avatar.png'), class: 'circle_icon'
+  .f-container.vertical
+    .article_author
+      %p= "#{article.author_name}"
+    .article_date
+      %p= "#{article.display_created_at}"
+
+  - if user_signed_in?
+    .article_heart.hidden.active-heart
+      = image_tag 'active-heart.svg'
+    .article_heart.hidden.non-active-heart
+      = image_tag 'non-active-heart.svg'
