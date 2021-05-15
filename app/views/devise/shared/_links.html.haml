@@ -1,11 +1,8 @@
 - if controller_name != 'sessions'
-  = link_to "ログインする", new_session_path(resource_name)
+  = link_to "アカウントが既にあります", new_session_path(resource_name)
   %br/
 - if devise_mapping.registerable? && controller_name != 'registrations'
-  = link_to "ユーザー登録する", new_registration_path(resource_name)
-  %br/
-- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-  = link_to "パスワードを忘れましたか？", new_password_path(resource_name)
+  = link_to "ユーザー登録します", new_registration_path(resource_name)
   %br/
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
   = link_to "確認のメールが届いてませんか？", new_confirmation_path(resource_name)

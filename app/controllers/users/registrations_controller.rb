@@ -4,12 +4,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  GET /resource/sign_up
   def new
     super
   end
 
-  POST /resource
   def create
     super
   end
@@ -23,7 +21,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました'
+    redirect_to root_path
+    if user.save
+      redirect_to root_path
+      notice: 'ゲストユーザーとして登録しました', class: 'alert alert-info'
+    else
+      flash.now[:error] = 'ゲストユーザとして登録できませんでいた'
+      render :new
+    end
   end
 
   # GET /resource/edit

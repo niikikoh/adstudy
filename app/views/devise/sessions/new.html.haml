@@ -1,6 +1,6 @@
 %main.login_window
   %section.title_area
-    %center Adstudy
+    %center.app_title Adstudy
     %center 学生のための学習教材プラットフォーム
   %section.form_area
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -11,8 +11,11 @@
       .password_area
         %p パスワード
         = f.password_field :password, autocomplete: "current-password", class: 'text_holder', placeholder: ''
+      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+        = link_to "パスワードを忘れましたか？", new_password_path(resource_name), class: 'addition_btn_password'
 
       .field.f-container
         = f.submit "ログイン", class: 'btn btn_flat'
-      = link_to 'ゲストログインする', user_guest_sign_in_path, method: :post
+        = link_to 'ゲストログインする', user_guest_sign_in_path, method: :post, class: 'addition_btn_guest'
+      
       = render "devise/shared/links"
