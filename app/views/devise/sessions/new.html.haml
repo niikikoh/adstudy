@@ -11,11 +11,9 @@
       .password_area
         %p パスワード
         = f.password_field :password, autocomplete: "current-password", class: 'text_holder', placeholder: ''
-      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-        = link_to "パスワードを忘れましたか？", new_password_path(resource_name), class: 'addition_btn_password'
 
       .field.f-container
         = f.submit "ログイン", class: 'btn btn_flat'
         = link_to 'ゲストログインする', user_guest_sign_in_path, method: :post, class: 'addition_btn_guest'
-      
-      = render "devise/shared/links"
+      %center.addition_btn_transition
+        = render "devise/shared/links"

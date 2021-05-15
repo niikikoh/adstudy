@@ -1,25 +1,30 @@
 .comment{
 
     &_btn{
-        width: 100px;
-        height: 25px;
 
-        color: black;
+        width: 150px;
+        height: 45px;
 
-        opacity:0.7;    
-        border-radius: 10px;
+        color: white;
+        background-color: $primary-base-color;
+
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 114%;
+        opacity:0.7;
+
+
+        &:hover {
+            cursor: pointer;
+            opacity:1;
+        }
+
     }
 
     &_date{
-        opacity: 0.3;
         font-size: 7px;
         margin: 5px 0px 0px 10px;
-    }
-
-
-
-    &:hover {
-        opacity:1;
-        cursor: pointer;
+        opacity: 0.3;
     }
 }

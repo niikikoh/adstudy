@@ -14,13 +14,13 @@
     align-items: center;
 
     padding-left: 20px;
+
+    &:hover{
+        background-color: $primary-sab-color;
+    }
 }
 
 .block_btn{
     display: block;
     text-align: center;
-
-    &:hover{
-        background-color: $primary-sab-color;
-    }
 }

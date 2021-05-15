@@ -12,6 +12,7 @@
 @import 'form';
 @import 'layouts';
 @import 'login';
+@import 'likes';
 @import 'header';
 @import 'profiles';
 @import 'tabs';
@@ -31,7 +32,7 @@ ul{
 }
 
 .container{
-    margin: 20px 0px 20px 0px;
+    margin: 50px 0px 50px 0px;
 }
 
 .hidden{

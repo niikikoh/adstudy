@@ -4,21 +4,18 @@
       = render 'commons/tabs'
     .inner
       %main.container
-        %section.article_header
+        %hr
+        %section.container.article_header
           = render 'commons/article', article: @article
+
+        %section.container.like_handler
+          = render 'commons/like', article: @article
         
         -# %section.price_tag
         -#   = render 'commons/payment', article: @article
-    
-        %section.like_handler
-          = render 'commons/like', article: @article
           
-        %aside.profile_cards
-          .f-container
-            = render 'profiles/card', article: @article
-            // 非同期処理のフォローで画面遷移しないボタン設置?
-          %hr
-        %section.comment_space
+        %hr
+        %section.container.comment_space
           %h2= 'コメント'
           = render 'commons/comment', comments: @comments
     .sidebar

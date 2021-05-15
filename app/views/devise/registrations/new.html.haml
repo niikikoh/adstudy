@@ -20,4 +20,5 @@
         = f.submit "新規登録", class: 'btn btn_flat'
         = link_to 'ゲストログインする', user_guest_sign_in_path, method: :post, class: 'addition_btn_guest'
 
-      = render "devise/shared/links"
+      %center.addition_btn_transition
+        = render "devise/shared/links"

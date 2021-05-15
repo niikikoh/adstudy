@@ -4,7 +4,7 @@
       = link_to article_path(article) do
         .article_data
           %p= "#{article.author_name}が#{article.display_created_at}に投稿"
-        %h3.article_title
+        %h3.card_title
           = article&.title
   - end.empty?
     %center= '誰かをフォローして記事を表示しよう！'

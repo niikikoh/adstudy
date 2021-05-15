@@ -52,6 +52,8 @@
     font-size: 13px;
     opacity: 0.5;
 
+
+
     &_guest{
       @extend .addition_btn;
 
@@ -69,6 +71,17 @@
 
         &:hover{
             opacity: 1;
+        }
+    }
+
+    &_transition{
+        a{
+
+            opacity: 0.8;
+
+            &:hover{
+                opacity: 1;
+            }
         }
     }
 }
