@@ -3,20 +3,12 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
-  GET /resource/sign_in
   def new
     super
   end
 
-  POST /resource/sign_in
   def create
     super
-  end
-
-  def guest
-    find_or_create_by!(name: 'ゲスト', email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-    end
   end
 
   def guest_sign_in
