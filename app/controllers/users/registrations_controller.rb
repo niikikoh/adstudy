@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to root_path
     if user.save
       redirect_to root_path
-      notice: 'ゲストユーザーとして登録しました', class: 'alert alert-info'
+      flash[:notice] = 'ゲストユーザーとして登録しました'
     else
       flash.now[:error] = 'ゲストユーザとして登録できませんでいた'
       render :new
