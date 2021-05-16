@@ -5,9 +5,12 @@ class CommentsController < ApplicationController
         @article = Article.find(params[:article_id])
         @comment = @article.comments.build(comment_params)
         @comment.user_id = current_user.id
-        @comment.save!
-
-        redirect_to @article
+        if @comment.save
+            flash[:notice] = 'コメントしました'
+            redirect_to article_path(@article)
+        else
+            flash[:error] = 'コメントに失敗しました'
+        end
     end
 
     private

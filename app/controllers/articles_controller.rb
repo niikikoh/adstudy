@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @articles = Article.all
+    @articles = Article.all.order('updated_at DESC')
     @profile = current_user.profile
   end
   
@@ -22,10 +22,10 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.build(article_params)
     @article.user_id = current_user.id
-    if @article.save!
-      redirect_to article_path(@article), notice: '保存できました'
+    if @article.save
+      redirect_to article_path(@article), notice: '記事を保存できました'
     else
-      flash.now[:error] = '保存に失敗しました'
+      flash.now[:error] = @article.errors.full_messages[0]
       render :new
     end
   end
@@ -38,9 +38,9 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.find(params[:id])
 
     if @article.update(article_params)
-      redirect_to article_path(@article), notice: '更新できました'
+      redirect_to article_path(@article), notice: '記事を更新できました'
     else
-      flash.now[:error] = '更新できませんでした'
+      flash.now[:error] = @article.errors.full_messages[0]
       render :edit
     end
   end

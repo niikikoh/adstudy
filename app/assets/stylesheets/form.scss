@@ -12,10 +12,15 @@
 }
 
 textarea, trix-editor {
-    width: 98%;
+    width: auto;
+    height: auto;
+
+    min-width: 500px;
+    min-height: 300px;
+
     margin: 8px 0px;
     padding: 8px 8px;
-    min-height: 440px;
+
     resize: vertical;
     border: 1px solid #EBEBEB;
     &.sm{
