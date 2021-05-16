@@ -1,9 +1,5 @@
-.container
-.outer
+.container.outer
   .inner
-    %ul
-      - article.errors.full_messages.each do |message|
-        %li= message
     = form_with(model: @article, local: true) do |f|
 
       %div
@@ -18,8 +14,8 @@
       %div
         = f.rich_text_area :content, placeholder: '学習した内容を書いてみよう'
 
-      %div
-        = f.number_field :price, min: 0, placeholder: '値段'
+      -# %div
+      -#   = f.number_field :price, min: 0, placeholder: '値段'
 
       %div
         = f.submit '保存', class: 'btn-primary'

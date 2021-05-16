@@ -1,25 +1,25 @@
-= form_with model: @profile, url: profile_path, local: true do |f|
-  - if @profile.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
-      %ul
-        - @profile.errors.full_messages.each do |message|
-          %li= message
+%center プロフィール編集
+%main.container
 
-  .field
-    = f.label :name, 'ユーザー名'
-    <br>
-    = f.text_field :name, class: 'naming_holder'
+  %section.form_area
+    = form_with model: @profile, url: profile_path, local: true do |f|
+      - if @profile.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
 
-  .field
-    = f.label :bio,'自己紹介'
-    <br>
-    = f.text_area :bio
+      .email_area
+        %h4 アイコンを選択する
+        = f.file_field :avatar
 
-  .field
-    = f.label :avatar,'アイコン'
-    <br>
-    = f.file_field :avatar
+      <br>
+      .password_area
+        %h4 ユーザー名
+        = f.text_field :name, class: 'naming_holder'
 
-  .actions
-    = f.submit '保存'
+      <br>
+      .field
+        %h4 自己紹介文
+        = f.text_area :bio
+
+      .actions
+        = f.submit '保存'
