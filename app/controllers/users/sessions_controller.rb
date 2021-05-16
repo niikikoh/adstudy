@@ -15,9 +15,10 @@ class Users::SessionsController < Devise::SessionsController
     user = User.guest
     sign_in user
     if user.save
-      redirect_to root_path, notice: 'ゲストユーザーとしてログインしました', class: 'alert alert-info'
+      redirect_to root_path
+      flash[:notice] = 'ゲストユーザーとして登録しました'
     else
-      flash.now[:error] = 'ゲストユーザとしてログインできませんでいた'
+      flash.now[:error] = 'ゲストユーザとして登録できませんでいた'
       render :new
     end
   end
