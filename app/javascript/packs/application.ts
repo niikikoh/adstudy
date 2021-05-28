@@ -43,7 +43,7 @@ document.addEventListener('turbolinks:load', function() {
     }
 })
 
-const handleHeartDisplay = (alreadyLiked) => {
+const handleHeartDisplay = (alreadyLiked: any) => {
     if (alreadyLiked) {
         $('.active-heart').removeClass('hidden')
     } else {
